@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mortgage Calculator</title>
+    </head>
+    <body>
+        <input type="number" id="MP" value=0 >
+        <input type="number" id="IR" value=7.0 min="2.0" max="20.0" >
+        <input type="number" id="time">
+        <button id="calculate" onclick="MonthlyMortgage()">Calculate</button>
+        <p id="OutPut"></p>
+
+            </textarea>
+        <script>
+		
+		document.getElementById("OutPut").readonly = true;
+		
+            function MonthlyMortgage()
+            {
+                var P = document.getElementById("MP").value;
+                var interestRate = document.getElementById("IR").value;
+				
+				var r = (interestRate/100);
+                var Time = document.getElementById("time").value;
+				var n = (Time*12);
+
+				var EQ1 = (1+r);
+                var EQ2 = Math.pow(EQ1, n);
+                var numer = (r * EQ2);
+                var denom = (EQ2 - 1);
+				var EQ4 = (numer/denom);
+				var EQ5 = (P*EQ4);
+                var monthyPayment = EQ5.toFixed(2);
+                document.getElementById("OutPut").innerHTML = monthyPayment.toString();
+            }
+        </script>
+        <form action="/action_page.php"></form>
+	</body>
+</html>
